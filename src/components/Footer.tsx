@@ -1,10 +1,24 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Globe, Linkedin, Twitter, Instagram } from 'lucide-react';
+import { Facebook,  Twitter, Instagram, Linkedin } from 'lucide-react';
 import { Button } from './ui/button';
 import { Separator } from './ui/separator';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
+  const [isDark, setIsDark] = useState(false);
+
+  useEffect(() => {
+    const handleThemeChange = () => {
+      setIsDark(document.documentElement.classList.contains('dark'));
+    };
+    // Initial check
+    handleThemeChange();
+    // Listen for changes to the 'dark' class on the documentElement
+    const observer = new MutationObserver(handleThemeChange);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+    return () => observer.disconnect();
+  }, []);
 
   const quickLinks = [
     { name: 'Home', path: '/' },
@@ -14,11 +28,12 @@ export function Footer() {
   ];
 
   const socialLinks = [
-    { name: 'LinkedIn', icon: Linkedin, href: '#' },
-    { name: 'X', icon: Twitter, href: '#' },
-    { name: 'Instagram', icon: Instagram, href: '#' },
-    { name: 'TikTok', icon: Globe, href: '#' },
-    { name: 'Threads', icon: Globe, href: '#' },
+    { name: 'LinkedIn', icon: Linkedin, href: 'https://www.linkedin.com/company/mulinguaglobal/' },
+    { name: 'Facebook', icon: Facebook, href: 'https://www.facebook.com/MuLinguaGlobal' },
+   
+    { name: 'Instagram', icon: Instagram, href: 'https://www.instagram.com/mulinguaglobal/' },
+    { name: 'X', icon: Twitter, href: 'https://x.com/mulinguaglobal' },
+   
   ];
 
   return (
@@ -28,8 +43,11 @@ export function Footer() {
           {/* Company Info */}
           <div className="space-y-4">
             <Link to="/" className="flex items-center space-x-2">
-              <Globe className="h-6 w-6 text-accent" />
-              <span className="text-xl font-bold">Mulingua</span>
+              <img 
+                src="/mainlogo.png" 
+                alt="Mulingua Logo" 
+                className={`h-30 w-auto ${isDark ? 'brightness-0 invert' : ''}`} 
+              />
             </Link>
             <p className="text-sm text-muted-foreground">
               Your Gateway to Seamless Global Communication

@@ -130,7 +130,6 @@ export default function Home() {
                 <p className="text-lg text-muted-foreground leading-relaxed mb-8">
                   We're proud to support organizations of every size and shape, from passionate startups to established global leaders. Wherever you are on your journey, we adapt to your needs and walk beside you, helping your message travel further and connect with audiences worldwide.
                 </p>
-                <LogoCloud />
               </div>
             </Reveal>
             

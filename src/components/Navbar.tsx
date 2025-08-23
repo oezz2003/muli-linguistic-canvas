@@ -46,8 +46,11 @@ export function Navbar() {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <Globe className="h-8 w-8 text-accent" />
-            <span className="text-2xl font-bold text-foreground">Mulingua</span>
+            <img 
+              src="/mainlogo.png" 
+              alt="Mulingua Logo" 
+              className={`h-20 w-auto ${isDark ? 'brightness-0 invert' : ''}`} 
+            />
           </Link>
 
           {/* Desktop Navigation */}
