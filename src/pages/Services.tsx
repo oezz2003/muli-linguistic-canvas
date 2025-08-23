@@ -57,9 +57,9 @@ export default function Services() {
 
   const industries = [
     {
-      name: 'Technology',
-      icon: Zap,
-      description: 'Software, apps, and tech documentation',
+      name: 'NGOs & Education',
+      icon: Users,
+      description: 'NGOs, SMEs, e-learning platforms, and students',
     },
     {
       name: 'Healthcare',
