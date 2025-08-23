@@ -62,6 +62,11 @@ export default function Services() {
       description: 'NGOs, SMEs, e-learning platforms, and students',
     },
     {
+      name: 'Technology',
+      icon: Zap,
+      description: 'Software, apps, and tech documentation',
+    },
+    {
       name: 'Healthcare',
       icon: Users,
       description: 'Medical documents and patient materials',
@@ -174,7 +179,7 @@ export default function Services() {
             </div>
           </Reveal>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
             {industries.map((industry, index) => (
               <Reveal key={industry.name} delay={index * 0.1}>
                 <Card className="text-center border-2 shadow-lg rounded-2xl hover:shadow-xl transition-all hover:-translate-y-2">
