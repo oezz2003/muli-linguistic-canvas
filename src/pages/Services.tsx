@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Languages, FileText, Mic, Globe, Users, Zap } from 'lucide-react';
+import { Languages, FileText, Mic, Globe, Users, Zap, MessageSquare, Subtitles, ClipboardCheck, AudioLines } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
@@ -24,34 +24,79 @@ export default function Services() {
       details: 'Our expert translators ensure your message maintains its impact and cultural relevance across all target markets. We combine linguistic expertise with cultural insights to deliver translations that truly connect with your audience.',
     },
     {
+      id: 'interpreting',
+      title: 'Interpreting',
+      icon: MessageSquare,
+      description: 'Real-time language interpretation for seamless communication.',
+      features: [
+        'Simultaneous Interpreting',
+        'Consecutive Interpreting',
+        'Conference Interpreting',
+        'Business Meeting Interpretation',
+        'Remote Interpreting',
+        'Medical Interpreting',
+      ],
+      details: 'Bridge language barriers in real-time with our professional interpreting services. Our skilled interpreters ensure clear, accurate communication in conferences, meetings, and critical conversations.',
+    },
+    {
+      id: 'subtitling',
+      title: 'Subtitling',
+      icon: Subtitles,
+      description: 'Professional subtitling services for global accessibility.',
+      features: [
+        'Video Subtitling',
+        'Movie Subtitling',
+        'Educational Content Subtitles',
+        'Multi-language Subtitles',
+        'Timing and Synchronization',
+        'Style and Format Customization',
+      ],
+      details: 'Make your video content accessible worldwide with our precise subtitling services. We ensure perfect timing, readability, and cultural adaptation for maximum audience engagement.',
+    },
+    {
+      id: 'proofreading',
+      title: 'Proofreading',
+      icon: ClipboardCheck,
+      description: 'Meticulous proofreading for flawless communication.',
+      features: [
+        'Document Proofreading',
+        'Academic Paper Review',
+        'Business Document Polish',
+        'Grammar and Syntax Check',
+        'Style Consistency',
+        'Cultural Appropriateness Review',
+      ],
+      details: 'Ensure your written communication is error-free and impactful. Our experienced proofreaders refine your content for clarity, accuracy, and professional presentation.',
+    },
+    {
       id: 'transcription',
-      title: 'Transcription & Subtitling',
+      title: 'Transcription',
       icon: FileText,
-      description: 'Ensure your messages are accessible and engaging.',
+      description: 'Accurate transcription services for all your audio content.',
       features: [
         'Audio Transcription',
         'Video Transcription',
-        'Subtitle Creation',
-        'Closed Captioning',
-        'Live Captioning',
-        'Multi-language Subtitles',
+        'Interview Transcription',
+        'Meeting Minutes',
+        'Legal Transcription',
+        'Medical Transcription',
       ],
-      details: 'Make your content accessible to wider audiences with our professional transcription and subtitling services. We ensure accuracy, proper timing, and cultural appropriateness in every project.',
+      details: 'Convert your audio and video content into accurate, searchable text. Our transcription services maintain context, speaker identification, and professional formatting.',
     },
     {
       id: 'voiceover',
-      title: 'Voice-Over & Proofreading',
-      icon: Mic,
-      description: 'Enhance your content with professional polish.',
+      title: 'Voice-over',
+      icon: AudioLines,
+      description: 'Professional voice-over services with native speakers.',
       features: [
-        'Professional Voice-Over',
-        'Native Speaker Talent',
-        'Audio Editing',
-        'Proofreading Services',
-        'Copy Editing',
-        'Quality Assurance',
+        'Commercial Voice-over',
+        'E-learning Narration',
+        'Documentary Voice-over',
+        'Audiobook Recording',
+        'IVR and Phone Systems',
+        'Character Voice Acting',
       ],
-      details: 'Bring your content to life with our native speaker voice talent and meticulous proofreading services. Every word is carefully crafted to ensure maximum impact and professional quality.',
+      details: 'Bring your content to life with our talented voice artists. We provide native-speaker quality recordings that capture the right tone and emotion for your project.',
     },
   ];
 
@@ -104,66 +149,64 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Services Tabs */}
-      <section className="py-20 md:py-28 bg-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <Reveal>
-            <Tabs defaultValue="translation" className="max-w-6xl mx-auto">
-              <TabsList className="grid grid-cols-1 md:grid-cols-3 mb-12 bg-muted rounded-2xl p-2">
-                {services.map((service) => (
-                  <TabsTrigger
-                    key={service.id}
-                    value={service.id}
-                    className="rounded-xl text-sm font-medium data-[state=active]:bg-accent data-[state=active]:text-accent-foreground p-4"
-                  >
-                    <service.icon className="h-5 w-5 mr-2" />
-                    {service.title}
-                  </TabsTrigger>
-                ))}
-              </TabsList>
-
-              {services.map((service) => (
-                <TabsContent key={service.id} value={service.id}>
-                  <div className="grid lg:grid-cols-2 gap-8">
-                    <Card className="border-2 shadow-lg rounded-2xl">
-                      <CardHeader>
-                        <div className="flex items-center mb-4">
-                          <service.icon className="h-8 w-8 text-accent mr-3" />
-                          <CardTitle className="text-2xl">{service.title}</CardTitle>
-                        </div>
-                        <p className="text-lg text-muted-foreground">
-                          {service.details}
-                        </p>
-                      </CardHeader>
-                      <CardContent>
-                        <Button asChild className="bg-accent hover:bg-accent/90 text-accent-foreground rounded-2xl">
-                          <Link to="/contact">Get Started</Link>
-                        </Button>
-                      </CardContent>
-                    </Card>
-
-                    <Card className="border-2 shadow-lg rounded-2xl">
-                      <CardHeader>
-                        <CardTitle className="text-xl mb-4">Service Features</CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <ul className="space-y-3">
-                          {service.features.map((feature) => (
-                            <li key={feature} className="flex items-center">
-                              <div className="w-2 h-2 bg-accent rounded-full mr-3 flex-shrink-0" />
-                              <span className="text-muted-foreground">{feature}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </CardContent>
-                    </Card>
+      {/* Service Detail Sections */}
+      {services.map((service, index) => (
+        <section key={service.id} className={`py-20 md:py-28 ${index % 2 === 0 ? 'bg-background' : 'bg-muted'}`}>
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-6xl mx-auto">
+              <Reveal>
+                <div className="text-center mb-16">
+                  <div className="inline-flex items-center justify-center w-20 h-20 bg-accent/10 rounded-full mb-6">
+                    <service.icon className="h-10 w-10 text-accent" />
                   </div>
-                </TabsContent>
-              ))}
-            </Tabs>
-          </Reveal>
-        </div>
-      </section>
+                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
+                    {service.title}
+                  </h2>
+                  <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                    {service.description}
+                  </p>
+                </div>
+              </Reveal>
+
+              <div className="grid lg:grid-cols-2 gap-8">
+                <Reveal delay={0.2}>
+                  <Card className="border-2 shadow-lg rounded-2xl">
+                    <CardHeader>
+                      <CardTitle className="text-2xl mb-4">About This Service</CardTitle>
+                      <p className="text-lg text-muted-foreground leading-relaxed">
+                        {service.details}
+                      </p>
+                    </CardHeader>
+                    <CardContent>
+                      <Button asChild className="bg-accent hover:bg-accent/90 text-accent-foreground rounded-2xl">
+                        <Link to="/contact">Get Started</Link>
+                      </Button>
+                    </CardContent>
+                  </Card>
+                </Reveal>
+
+                <Reveal delay={0.3}>
+                  <Card className="border-2 shadow-lg rounded-2xl">
+                    <CardHeader>
+                      <CardTitle className="text-2xl mb-6">Service Features</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <ul className="space-y-4">
+                        {service.features.map((feature) => (
+                          <li key={feature} className="flex items-center">
+                            <div className="w-3 h-3 bg-accent rounded-full mr-4 flex-shrink-0" />
+                            <span className="text-muted-foreground text-lg">{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </CardContent>
+                  </Card>
+                </Reveal>
+              </div>
+            </div>
+          </div>
+        </section>
+      ))}
 
       {/* Industries We Serve */}
       <section className="py-20 md:py-28 bg-muted">
