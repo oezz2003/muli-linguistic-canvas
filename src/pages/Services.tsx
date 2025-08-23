@@ -104,206 +104,63 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Translation & Localization */}
+      {/* Services Tabs */}
       <section className="py-20 md:py-28 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <Reveal>
-            <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-16">
-                <div className="flex items-center justify-center mb-6">
-                  <Languages className="h-12 w-12 text-accent mr-4" />
-                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
-                    Translation & Localization
-                  </h2>
-                </div>
-                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                  Adapt your content to resonate with global audiences
-                </p>
-              </div>
-              
-              <div className="grid lg:grid-cols-2 gap-8">
-                <Card className="border-2 shadow-lg rounded-2xl">
-                  <CardContent className="p-8">
-                    <p className="text-lg text-muted-foreground mb-6">
-                      Our expert translators ensure your message maintains its impact and cultural relevance across all target markets. We combine linguistic expertise with cultural insights to deliver translations that truly connect with your audience.
-                    </p>
-                    <Button asChild className="bg-accent hover:bg-accent/90 text-accent-foreground rounded-2xl">
-                      <Link to="/contact">Get Started</Link>
-                    </Button>
-                  </CardContent>
-                </Card>
+            <Tabs defaultValue="translation" className="max-w-6xl mx-auto">
+              <TabsList className="grid grid-cols-1 md:grid-cols-3 mb-12 bg-muted rounded-2xl p-2">
+                {services.map((service) => (
+                  <TabsTrigger
+                    key={service.id}
+                    value={service.id}
+                    className="rounded-xl text-sm font-medium data-[state=active]:bg-accent data-[state=active]:text-accent-foreground p-4"
+                  >
+                    <service.icon className="h-5 w-5 mr-2" />
+                    {service.title}
+                  </TabsTrigger>
+                ))}
+              </TabsList>
 
-                <Card className="border-2 shadow-lg rounded-2xl">
-                  <CardHeader>
-                    <CardTitle className="text-xl mb-4">Service Features</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <ul className="space-y-3">
-                      <li className="flex items-center">
-                        <div className="w-2 h-2 bg-accent rounded-full mr-3 flex-shrink-0" />
-                        <span className="text-muted-foreground">Document Translation</span>
-                      </li>
-                      <li className="flex items-center">
-                        <div className="w-2 h-2 bg-accent rounded-full mr-3 flex-shrink-0" />
-                        <span className="text-muted-foreground">Website Localization</span>
-                      </li>
-                      <li className="flex items-center">
-                        <div className="w-2 h-2 bg-accent rounded-full mr-3 flex-shrink-0" />
-                        <span className="text-muted-foreground">Software Localization</span>
-                      </li>
-                      <li className="flex items-center">
-                        <div className="w-2 h-2 bg-accent rounded-full mr-3 flex-shrink-0" />
-                        <span className="text-muted-foreground">Marketing Content Translation</span>
-                      </li>
-                      <li className="flex items-center">
-                        <div className="w-2 h-2 bg-accent rounded-full mr-3 flex-shrink-0" />
-                        <span className="text-muted-foreground">Legal Document Translation</span>
-                      </li>
-                      <li className="flex items-center">
-                        <div className="w-2 h-2 bg-accent rounded-full mr-3 flex-shrink-0" />
-                        <span className="text-muted-foreground">Technical Translation</span>
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
+              {services.map((service) => (
+                <TabsContent key={service.id} value={service.id}>
+                  <div className="grid lg:grid-cols-2 gap-8">
+                    <Card className="border-2 shadow-lg rounded-2xl">
+                      <CardHeader>
+                        <div className="flex items-center mb-4">
+                          <service.icon className="h-8 w-8 text-accent mr-3" />
+                          <CardTitle className="text-2xl">{service.title}</CardTitle>
+                        </div>
+                        <p className="text-lg text-muted-foreground">
+                          {service.details}
+                        </p>
+                      </CardHeader>
+                      <CardContent>
+                        <Button asChild className="bg-accent hover:bg-accent/90 text-accent-foreground rounded-2xl">
+                          <Link to="/contact">Get Started</Link>
+                        </Button>
+                      </CardContent>
+                    </Card>
 
-      {/* Transcription & Subtitling */}
-      <section className="py-20 md:py-28 bg-muted">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <Reveal>
-            <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-16">
-                <div className="flex items-center justify-center mb-6">
-                  <FileText className="h-12 w-12 text-accent mr-4" />
-                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
-                    Transcription & Subtitling
-                  </h2>
-                </div>
-                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                  Ensure your messages are accessible and engaging
-                </p>
-              </div>
-              
-              <div className="grid lg:grid-cols-2 gap-8">
-                <Card className="border-2 shadow-lg rounded-2xl">
-                  <CardContent className="p-8">
-                    <p className="text-lg text-muted-foreground mb-6">
-                      Make your content accessible to wider audiences with our professional transcription and subtitling services. We ensure accuracy, proper timing, and cultural appropriateness in every project.
-                    </p>
-                    <Button asChild className="bg-accent hover:bg-accent/90 text-accent-foreground rounded-2xl">
-                      <Link to="/contact">Get Started</Link>
-                    </Button>
-                  </CardContent>
-                </Card>
-
-                <Card className="border-2 shadow-lg rounded-2xl">
-                  <CardHeader>
-                    <CardTitle className="text-xl mb-4">Service Features</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <ul className="space-y-3">
-                      <li className="flex items-center">
-                        <div className="w-2 h-2 bg-accent rounded-full mr-3 flex-shrink-0" />
-                        <span className="text-muted-foreground">Audio Transcription</span>
-                      </li>
-                      <li className="flex items-center">
-                        <div className="w-2 h-2 bg-accent rounded-full mr-3 flex-shrink-0" />
-                        <span className="text-muted-foreground">Video Transcription</span>
-                      </li>
-                      <li className="flex items-center">
-                        <div className="w-2 h-2 bg-accent rounded-full mr-3 flex-shrink-0" />
-                        <span className="text-muted-foreground">Subtitle Creation</span>
-                      </li>
-                      <li className="flex items-center">
-                        <div className="w-2 h-2 bg-accent rounded-full mr-3 flex-shrink-0" />
-                        <span className="text-muted-foreground">Closed Captioning</span>
-                      </li>
-                      <li className="flex items-center">
-                        <div className="w-2 h-2 bg-accent rounded-full mr-3 flex-shrink-0" />
-                        <span className="text-muted-foreground">Live Captioning</span>
-                      </li>
-                      <li className="flex items-center">
-                        <div className="w-2 h-2 bg-accent rounded-full mr-3 flex-shrink-0" />
-                        <span className="text-muted-foreground">Multi-language Subtitles</span>
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* Voice-Over & Proofreading */}
-      <section className="py-20 md:py-28 bg-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <Reveal>
-            <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-16">
-                <div className="flex items-center justify-center mb-6">
-                  <Mic className="h-12 w-12 text-accent mr-4" />
-                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
-                    Voice-Over & Proofreading
-                  </h2>
-                </div>
-                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                  Enhance your content with professional polish
-                </p>
-              </div>
-              
-              <div className="grid lg:grid-cols-2 gap-8">
-                <Card className="border-2 shadow-lg rounded-2xl">
-                  <CardContent className="p-8">
-                    <p className="text-lg text-muted-foreground mb-6">
-                      Bring your content to life with our native speaker voice talent and meticulous proofreading services. Every word is carefully crafted to ensure maximum impact and professional quality.
-                    </p>
-                    <Button asChild className="bg-accent hover:bg-accent/90 text-accent-foreground rounded-2xl">
-                      <Link to="/contact">Get Started</Link>
-                    </Button>
-                  </CardContent>
-                </Card>
-
-                <Card className="border-2 shadow-lg rounded-2xl">
-                  <CardHeader>
-                    <CardTitle className="text-xl mb-4">Service Features</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <ul className="space-y-3">
-                      <li className="flex items-center">
-                        <div className="w-2 h-2 bg-accent rounded-full mr-3 flex-shrink-0" />
-                        <span className="text-muted-foreground">Professional Voice-Over</span>
-                      </li>
-                      <li className="flex items-center">
-                        <div className="w-2 h-2 bg-accent rounded-full mr-3 flex-shrink-0" />
-                        <span className="text-muted-foreground">Native Speaker Talent</span>
-                      </li>
-                      <li className="flex items-center">
-                        <div className="w-2 h-2 bg-accent rounded-full mr-3 flex-shrink-0" />
-                        <span className="text-muted-foreground">Audio Editing</span>
-                      </li>
-                      <li className="flex items-center">
-                        <div className="w-2 h-2 bg-accent rounded-full mr-3 flex-shrink-0" />
-                        <span className="text-muted-foreground">Proofreading Services</span>
-                      </li>
-                      <li className="flex items-center">
-                        <div className="w-2 h-2 bg-accent rounded-full mr-3 flex-shrink-0" />
-                        <span className="text-muted-foreground">Copy Editing</span>
-                      </li>
-                      <li className="flex items-center">
-                        <div className="w-2 h-2 bg-accent rounded-full mr-3 flex-shrink-0" />
-                        <span className="text-muted-foreground">Quality Assurance</span>
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
+                    <Card className="border-2 shadow-lg rounded-2xl">
+                      <CardHeader>
+                        <CardTitle className="text-xl mb-4">Service Features</CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <ul className="space-y-3">
+                          {service.features.map((feature) => (
+                            <li key={feature} className="flex items-center">
+                              <div className="w-2 h-2 bg-accent rounded-full mr-3 flex-shrink-0" />
+                              <span className="text-muted-foreground">{feature}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </TabsContent>
+              ))}
+            </Tabs>
           </Reveal>
         </div>
       </section>
